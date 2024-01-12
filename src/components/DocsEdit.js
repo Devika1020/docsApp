@@ -2,12 +2,14 @@ import React, { useEffect, useRef, useState } from 'react'
 import ReactQuill from 'react-quill';
 import { Route, useParams } from 'react-router-dom'
 import 'react-quill/dist/quill.snow.css';
+
 import { database } from '../firebaseConfig';
 import {
     updateDoc,
     collection,
     doc,onSnapshot
 } from 'firebase/firestore';
+import { Link } from '@mui/material';
 
 function DocsEdit({database}) {
     let params=useParams();
@@ -25,10 +27,10 @@ function DocsEdit({database}) {
                 docsDesc: docsDesc
             })
             .then(() => {
-                alert('Saved')
+                // alert('Saved')
             })
             .catch(() => {
-                alert('Cannot Save')
+                // alert('Cannot Save')
             })
         }, 1000)
         return () => clearTimeout(updateDocsData)
@@ -54,14 +56,13 @@ function DocsEdit({database}) {
 
     return (
         <div>
-            <h1>EditDocs</h1>
-          <h1> Title : {documentTitle}</h1>
+            <h1 className='ed'>Edit Your Document</h1>
+          <h2 className='ed'> Title : {documentTitle}</h2>
             <ReactQuill
    value={docsDesc}
    onChange={getQuillData}
    
 />
-
         </div>
     )
 }

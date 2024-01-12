@@ -4,7 +4,7 @@
 .ad{
   height: 40px;
   width: 200px;
-  background-color: #ffc107;
+  background-color: rgb(216, 139, 139);
   border: none;
   cursor: pointer;
 }
@@ -24,7 +24,7 @@
 .gm{
   display: grid;
   grid-template-columns: auto auto auto auto;
-  color: whitesmoke;
+  color: rgb(255, 249, 249);
   margin-top: 20px;
   gap: 20px;
   justify-content: center;
@@ -32,7 +32,10 @@
 
 .gc{
   padding: 20px;
-  background-color: rgb(98, 98, 98);
-  width: 300px;
+  background-color: rgb(216, 139, 139);
+  width: 200px;
   cursor: pointer;
+}
+.ed{
+  text-align: center;
 }

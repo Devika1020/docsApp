@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, } from 'react'
 import Modal from './Modal';
-import { collection,addDoc,onSnapshot, doc } from 'firebase/firestore';
+import { collection,addDoc,onSnapshot, doc, deleteDoc } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 
 // import Modal from '@mui/material/Modal';
@@ -26,6 +26,19 @@ export default function Docs({
         }))
     })
 }
+// to delete
+function deleteDocm(id){
+  const docRef=doc(database,'docsData',id)
+  deleteDoc(docRef)
+  // .then(()=>{
+  //   alert('Data Deleted')
+  //   handClose()
+  // })
+  // .catch(()=>{
+  //   alert('cannot delete')
+  // })
+}
+// 
 const isMounted = useRef()
 useEffect(() => {
   if(isMounted.current){
@@ -43,6 +56,7 @@ let navigate=useNavigate();
   const [title, setTitle] = useState('')
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     
   return (
     <div className='d'>
@@ -51,9 +65,15 @@ let navigate=useNavigate();
         <div className='gm'>
                 {docsData.map((doc) => {
                     return (
-                        <div className='gc' onClick={()=>getId(doc.id)}>
-                            <p>{doc.title}</p>
-                            {doc.docsDesc}
+                        <div className='gc' >
+                          <button onClick={()=>getId(doc.id)}><i className='fa-solid fa-edit'></i></button>
+                          <button className='border-none' onClick={()=>deleteDocm(doc.id)}> <i className='fa-solid fa-trash'></i></button>
+                       <br />   <br /><b><u>{doc.title}</u></b>
+                          
+                            
+                           
+                            {/* {doc.docsDesc} */}
+                            <div dangerouslySetInnerHTML={{__html: doc.docsDesc}} />
 
                         </div>
                     )
