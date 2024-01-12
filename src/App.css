@@ -39,3 +39,28 @@
 .ed{
   text-align: center;
 }
+
+@media screen and (max-width:800px){
+  h1{
+    margin-left: -82px;
+    padding-left: 84px;
+  }
+  .ad {
+    margin-left: 16px;
+    width:53%;
+    height:53px;
+    padding: -20px;
+    font-size: medium;
+
+  }
+  .gm{
+    grid-template-columns:subgrid;
+    margin-left: -96px;
+
+  }
+  .gc{
+    margin-left: 98px;
+
+  }
+  
+}
